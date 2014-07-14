@@ -66,7 +66,7 @@ UIApplication.sharedApplication.delegate;
 ## Spacing
 
 * 4 spaces. Soft tabs. Period.
-  * When working with older projects that uses *different* number of spaces, adapt to the existing style. **Do not** convert existing projects to new guidelines or you'll break `git blame`.
+  * When working with older projects that used *wrong* number of spaces, adapt to the existing style. **Do not** convert existing projects to new guidelines or you'll break `git blame`.
 * [1TBS](http://en.wikipedia.org/wiki/Indent_style#Variant:_1TBS) for control statements.
 * [K&R](http://en.wikipedia.org/wiki/Indent_style#K.26R_style) for method declaration. (Opening brace appears in the following line.)
 * **Never** omit braces in control statements, `goto fail;` should be a convincing enough argument for everyone.
@@ -194,7 +194,7 @@ Generally avoid directly accessing instance variables, except in initializer met
 
 ### Variable Qualifiers
 
-When it comes to the variable qualifiers [introduced with ARC](https://developer.apple.com/library/ios/releasenotes/objectivec/rn-transitioningtoarc/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011226-CH1-SW4), the qualifier (`__strong`, `__weak`, `__unsafe_unretained`, `__autoreleasing`) should be placed first, e.g., `__weak NSString *text`. This is technically incorrect, but much more clear since it immediately stands out (and allowed by the compiler).
+When it comes to the variable qualifiers [introduced with ARC](https://developer.apple.com/library/ios/releasenotes/objectivec/rn-transitioningtoarc/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011226-CH1-SW4), the qualifier (`__strong`, `__weak`, `__unsafe_unretained`, `__autoreleasing`) should be placed first, e.g., `__weak NSString *text`. This is technically incorrect, but much more clear since it immediately stands out (and is allowed by the compiler).
 
 ### Property attributes
 
@@ -268,7 +268,7 @@ Use common sense. Explain why you’re doing something, not the steps you’re t
 
 Never commit code that has been commented out (take a second and go through `git diff` before applying your changes, make sure you're leaving codebase in better shape than before, no one likes to deal with a messy code).
 
-[Documentation comments](http://nshipster.com/documentation/) are good. Use them when they're actually useful and needed. If you can refactor something so that you don't need to explain it, do so instead if feasible.
+[Documentation comments](http://nshipster.com/documentation/) are good. Use them when they're actually useful and needed. If you can refactor something so that you don't need to explain it, do that instead.
 
 ## Init and Dealloc
 
