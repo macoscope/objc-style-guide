@@ -277,7 +277,8 @@ Never commit code that has been commented out (take a second and go through `git
 `init` methods should be structured like this:
 
 ```objc
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init]; // or call the designated initializer
     if (self) {
         // Custom initialization
