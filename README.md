@@ -153,14 +153,14 @@ Multiargument methods like new lines between arguments, colon-aligned.
 **For example:**
 
 ```objc
-- (void)thisViewController:(ThisViewController *)thisViewController
-        didFinishWithThing:(Thing *)thing
-             somethingElse:(SomethingElse *)somethingElse
+- (void)thisViewController:(nonnull ThisViewController *)thisViewController
+        didFinishWithThing:(nonnull Thing *)thing
+             somethingElse:(nonnull SomethingElse *)somethingElse
                      style:(Style)style;
 
-- (void)prepareCakeWithIngredients:(NSArray *)ingredients
-                           success:(void(^)(Cake *deliciousCake))success
-                           failure:(void(^)(NSError *))failure;
+- (void)prepareCakeWithIngredients:(nonnull NSArray *)ingredients
+                           success:(nonnull void(^)(Cake *deliciousCake))success
+                           failure:(nonnull void(^)(NSError *))failure;
 ```
 
 
@@ -193,7 +193,7 @@ Generally avoid directly accessing instance variables, except in initializer met
 ```objc
 @interface MCSObject: NSObject
 
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong, nullable) NSString *title;
 
 @end
 ```
@@ -336,8 +336,8 @@ There are no well-defined semantics for defining the same method in more than on
 
 @interface NSArray (MCSCollectionUtility)
 
-- (void)mcs_each:(void(^)(id object))block;
-- (void)mcs_eachWithIndex:(void(^)(id object, NSUInteger index))block;
+- (void)mcs_each:(nonnull void(^)(id object))block;
+- (void)mcs_eachWithIndex:(nonnull void(^)(id object, NSUInteger index))block;
 ...
 ```
 
@@ -487,10 +487,10 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface MCSFishEyeView()
 
-@property (nonatomic, strong) NSArray *itemContainers;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong, nonnull) NSArray *itemContainers;
+@property (nonatomic, strong, nonnull) NSArray *items;
 
-@property (nonatomic, strong) UIView *transformView;
+@property (nonatomic, strong, nonnull) UIView *transformView;
 
 @end
 ```
