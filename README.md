@@ -201,9 +201,9 @@ When it comes to the variable qualifiers [introduced with ARC](https://developer
 Property attributes are declared in the following order:
 
 1. Atomicity (`nonatomic`)
-2. Storage type (`weak`, `strong`, `copy`, etc.)
-3. Visibility (`readonly`, `readwrite`)
-4. Custom getters and setters
+1. Storage type (`weak`, `strong`, `copy`, etc.)
+1. Visibility (`readonly`, `readwrite`)
+1. Custom getters and setters
 
 
 **For example:**
