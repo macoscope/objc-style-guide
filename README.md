@@ -401,6 +401,8 @@ Magic values should be avoided. If you do need to define a constant, it should b
 
 Avoid `#define`s. Unless you're writing an actual macro. Then, by all means, go ahead.
 
+@jonreid has good article about [why `#define` is a 'code smell'](http://qualitycoding.org/preprocessor/).
+
 You may use Hungarian notation for implementation-level constants.
 
 **For example:**
