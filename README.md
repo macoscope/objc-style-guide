@@ -49,7 +49,7 @@ Property? Dot-notation. **Always**.
 
 Not a property? Brackets.
 
-If Apple brings their frameworks up to date with modern ObjC syntax (looking at you, `NSArray.count`!), feel free to use dot-notation when targeting earlier releases.
+If Apple brings their frameworks up to date with modern ObjC syntax, feel free to use dot-notation when targeting earlier releases.
 
 **For example:**
 ```objc
