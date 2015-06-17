@@ -21,6 +21,7 @@ If you haven't read the [Coding Guidelines for Cocoa](https://developer.apple.co
 * [Spacing](#spacing)
   * [Ternary Operator](#ternary-operator)
 * [Error handling](#error-handling)
+* [Nullability](#nullability)
 * [Methods](#methods)
 * [Variables](#variables)
   * [Variable Qualifiers](#variable-qualifiers)
@@ -121,6 +122,19 @@ if (error) {
 
 But really, read that NSHipster article.
 
+
+## Nullability
+
+Always use [nullability annotations](https://developer.apple.com/swift/blog/?id=25) in method and property definitions.
+
+**For example:**
+```objc
+- (nullable MCSPerson *)teamMemberWithEmailAddress:(nonnull NSString *)emailAddress;
+
+@property (nonatomic, strong, nonnull) NSString *title;
+```
+
+
 ## Methods
 
 Follow Apple API examples and docs. A space between `+`/`-` and method name, a space between method segments, a space between type and asterisk. No spaces anywhere else.
@@ -139,14 +153,14 @@ Multiargument methods like new lines between arguments, colon-aligned.
 **For example:**
 
 ```objc
-- (void)thisViewController:(ThisViewController *)thisViewController
-        didFinishWithThing:(Thing *)thing
-             somethingElse:(SomethingElse *)somethingElse
+- (void)thisViewController:(nonnull ThisViewController *)thisViewController
+        didFinishWithThing:(nonnull Thing *)thing
+             somethingElse:(nonnull SomethingElse *)somethingElse
                      style:(Style)style;
 
-- (void)prepareCakeWithIngredients:(NSArray *)ingredients
-                           success:(void(^)(Cake *deliciousCake))success
-                           failure:(void(^)(NSError *))failure;
+- (void)prepareCakeWithIngredients:(nonnull NSArray *)ingredients
+                           success:(nonnull void(^)(Cake *deliciousCake))success
+                           failure:(nonnull void(^)(NSError *))failure;
 ```
 
 
@@ -179,7 +193,7 @@ Generally avoid directly accessing instance variables, except in initializer met
 ```objc
 @interface MCSObject: NSObject
 
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong, nullable) NSString *title;
 
 @end
 ```
@@ -201,15 +215,16 @@ When it comes to the variable qualifiers [introduced with ARC](https://developer
 Property attributes are declared in the following order:
 
 1. Atomicity (`nonatomic`)
-2. Storage type (`weak`, `strong`, `copy`, etc.)
-3. Visibility (`readonly`, `readwrite`)
-4. Custom getters and setters
+1. Storage type (`weak`, `strong`, `copy`, etc.)
+1. Nullability (`nullable`, `nonnull`)
+1. Visibility (`readonly`, `readwrite`)
+1. Custom getters and setters
 
 
 **For example:**
 ```objc
-@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, weak) IBOutlet UILabel *detailDescriptionLabel;
+@property (nonatomic, strong, nullable, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, weak, nonnull) IBOutlet UILabel *detailDescriptionLabel;
 @property (nonatomic) BOOL selected;
 ```
 
@@ -321,8 +336,8 @@ There are no well-defined semantics for defining the same method in more than on
 
 @interface NSArray (MCSCollectionUtility)
 
-- (void)mcs_each:(void(^)(id object))block;
-- (void)mcs_eachWithIndex:(void(^)(id object, NSUInteger index))block;
+- (void)mcs_each:(nonnull void(^)(id object))block;
+- (void)mcs_eachWithIndex:(nonnull void(^)(id object, NSUInteger index))block;
 ...
 ```
 
@@ -472,10 +487,10 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface MCSFishEyeView()
 
-@property (nonatomic, strong) NSArray *itemContainers;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong, nonnull) NSArray *itemContainers;
+@property (nonatomic, strong, nonnull) NSArray *items;
 
-@property (nonatomic, strong) UIView *transformView;
+@property (nonatomic, strong, nonnull) UIView *transformView;
 
 @end
 ```
